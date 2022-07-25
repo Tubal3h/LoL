@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+/* font-family: 'Poppins', sans-serif; */
+
+:root{
+    --color1: #353941;
+    --color2: #26282B;
+    --color3:#5F85DB;
+    --color4: #90B8F8;
+    --font1: 'Poppins', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    color: var(--color4);
+    font-family: var(--font1);
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
+body{
+    background-color: var(--color1);
+    /* background-image: url(../img/arch-linux-linux-dark-gray-archlinux-wallpaper-preview.jpg); */
+    /* background-repeat: no-repeat; */
+    /* background-size: contain; */
+}
+
+body {
+    overflow: hidden;
+    height: 100%;
+}
+
+#pic0{
+    position: fixed;
+    top: 1vw;
+    left: 6.7vw;
+    z-index: -1;
+}
+
+#pic1{
+    display: none;
+    position: fixed;
+    right: 0vw;
+    /* z-index: -1; */
+}
+
+/* pag - counter */
+
+#pag_num{
+    position: fixed;
+    top: 10vw;
+    left: 20vw;
+}
+
+#pag_text{
+    display: flex;
+    letter-spacing: 2px;
+}
+
+#pag_text h3{
+    text-transform: uppercase;
+}
+
+.pad_pag{
+    padding: 0vw 0.2vw;
+}
+
+#pag_text_count{
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color4);
+}
+
+
+#ge{
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color4);
+}
+
+#pag_bar{
+    margin: 1vw 0vw;
+    border: var(--color3) 1px solid;
+}
+
+#pag_bar_count{
+    border: var(--color4) 2.5px solid;
+    width: 1.7vw;
+    position: relative;
+    top: -1.2vw;
+}
+
+#pag_bar_count2{
+    border: var(--color4) 2.5px solid;
+    width: 1.7vw;
+    position: relative;
+    top: -1.2vw;
+    left: 2vw;
+}
+
+#pag_bar_count3{
+    border: var(--color4) 2.5px solid;
+    width: 1.7vw;
+    position: relative;
+    top: -1.2vw;
+    left: 3.9vw;
+}
+
+#pag_bar_count4{
+    border: var(--color4) 2.5px solid;
+    width: 1.7vw;
+    position: relative;
+    top: -1.2vw;
+    left: 5.9vw;
+}
+
+/* navbar */
+nav{
+    position: fixed;
+    right: 0vw;
+    top: 1vw;
+    z-index: 10;
+
+}
+nav #menu{
+    display: flex;
+    /* background-color: var(--color1); */
+}
+
+#menu *{
+    margin-right: 0.5vw;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color4);
+}
+
+
+/* LOGO */
+
+#logo{
+    border-right: 2px solid var(--color3);
+    position: fixed;
+    top: 1vw;
+    height: 95%;
+}
+
+#logo h1{
+    position: relative;
+    /* top: -1vw; */
+    padding: 0 0.1vw;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+#icons{
+    position: absolute;
+    bottom: 0;
+    left: 2vw;
+}
+
+#icons a img{
+    display: block;
+    width: 1vw;
+    padding: 2vw 0vw;
+}
+
+/* footer */
+
+footer{
+    position: fixed;
+    bottom: 0;
+    right: 1vw;
+}
+
+footer *{
+    text-decoration: none;
+}
+
+
+/* pag-1 */
+
+#pag1{
+    height: 48.2vw;
+    /* background-color: var(--color4); */
+    /* border: 1px solid var(--color4); */
+}
+
+/* titolo */
+
+#titolo_1{
+    position: absolute;
+    top: 18vw;
+    right: 4vw;
+}
+
+#logo_pic{
+    position: absolute;
+    top: -8vw;
+    right: 2vw;
+    width: 25vw;
+}
+
+#titolo_1 *{
+    text-transform: uppercase;
+}
+
+
+/* banner1 */
+
+#banner1{
+    /* border: 1px solid red; */
+    position: absolute;
+    display: flex;
+    bottom: 1.4vw;
+    right: 0;
+    height: 20vw;
+    width: 93.3%;
+    background-color: var(--color2);
+}
+
+#banner1_box1{
+    text-transform: uppercase;
+    border-right:  1px solid var(--color4);
+    margin-left: 3vw;
+    width: 40vw;
+    height: 90%;
+    margin-top: 1vw;
+}
+
+#banner1_box1 h1{
+    padding: 0vw 2vw;
+}
+
+#banner1_box1 h3{
+    padding: 1vw 2vw;
+    font-size: 0.8vw;
+}
+
+#banner1_box1 p{
+    padding: 1vw 2vw;
+    font-size: 0.6vw;
+}
+
+/* banner2 */
+
+#banner1_box2{
+    /* display: none; */
+    text-transform: uppercase;
+    border-right: 1px solid var(--color4);
+    width: 40vw;
+    height: 90%;
+    margin-top: 1vw;
+    /* padding-top: 3vw; */
+}
+
+
+
+#banner1_box2 p{
+    padding: 0vw 2vw;
+    padding-top: 3.5vw;
+    font-size: 0.6vw;
+}
+
+/* pag. 2 */
+
+#pag2{
+    height: 48.2vw;
+    position: relative;
+    /* background-color: var(--color4); */
+    /* border: 1px solid var(--color4); */
+}
+
+.profile_pic{
+    border-radius: 150px;
+    width: 8vw;
+}
+
+
+
+.profile_container{
+    text-align: center;
+}
+
+/* pag. 3 */
+
+#pag3{
+    height: 48.2vw;
+    /* background-color: var(--color4); */
+    /* border: 1px solid var(--color4); */
+}
+
+/* pag. 4 */
+
+#pag4{
+    height: 48.2vw;
+    /* background-color: var(--color4); */
+    /* border: 1px solid var(--color4); */
+}
+
