@@ -130,11 +130,17 @@ nav #menu{
 
 #menu *{
     margin-right: 0.5vw;
+    
+}
+
+.textMenu{
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 5px;
     color: transparent;
     -webkit-text-stroke: 1px var(--color4);
+    padding: 0.5vw;
+    font-size: 26pt;
 }
 
 
