@@ -39,10 +39,20 @@ window.addEventListener('DOMContentLoaded', function(){
     // pagina 3
     btn_services.onclick = function() {
         count_pag.innerHTML = `03`
+        slide_count.innerHTML = `
+        <div id="pag_bar_count3">
+
+        </div>
+        `
     }
 
     // pagina 4
     btn_contact.onclick = function() {
         count_pag.innerHTML = `04`
+        slide_count.innerHTML = `
+        <div id="pag_bar_count4">
+
+        </div>
+        `
     }
 })
