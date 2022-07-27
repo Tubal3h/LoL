@@ -121,7 +121,7 @@ input {
 .adSection {
     display: flex;
     flex-direction: column;
-
+}
 .text-spacing {
     letter-spacing: 2px;
 }
