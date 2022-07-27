@@ -39,4 +39,15 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }, 1000);
 
+    // Number Validator
+    var inputs = $("#test");
+    inputs.addEventListener('keypress', onlyNumber(inputs));
+    // for(i = 0; i < inputs.lenght; i++){
+    //     inputs[i].addEventListener('keypress', onlyNumber(inputs[i]));
+    // }
+
 })
+
+function onlyNumber(el){
+    console.log(el.target)
+}
