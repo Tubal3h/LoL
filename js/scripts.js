@@ -1,58 +1,31 @@
 window.addEventListener('DOMContentLoaded', function () {
 
-    // pagine
-    var p1 = document.getElementById("pag1");
-    var p2 = document.getElementById("pag2");
-    var p3 = document.getElementById("pag3");
-    var p4 = document.getElementById("pag4");
+    // Set the date we're counting down to
+    var countDownDate = new Date("Aug 16, 2022 08:59:00").getTime();
 
-    // navbar button
-    var btn_home = document.getElementById("home");
-    var btn_about = document.getElementById("about");
-    var btn_services = document.getElementById("services");
-    var btn_contact = document.getElementById("contact");
+    // Update the count down every 1 second
+    var x = setInterval(function () {
 
-    // pag counter
-    var count_pag = document.getElementById("pag_text_count");
-    var slide_count = document.getElementById("slide_pag");
+        // Get today's date and time
+        var now = new Date().getTime();
 
-    // pagina 1
-    btn_home.onclick = function () {
-        count_pag.innerHTML = `01`
-        slide_count.innerHTML = `
-        <div id="pag_bar_count">
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
 
-        </div>
-        `
-    }
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // pagina 2
-    btn_about.onclick = function () {
-        count_pag.innerHTML = `02`
-        slide_count.innerHTML = `
-        <div id="pag_bar_count2">
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
 
-        </div>
-        `
-    }
-
-    // pagina 3
-    btn_services.onclick = function () {
-        count_pag.innerHTML = `03`
-        slide_count.innerHTML = `
-        <div id="pag_bar_count3">
-
-        </div>
-        `
-    }
-
-    // pagina 4
-    btn_contact.onclick = function () {
-        count_pag.innerHTML = `04`
-        slide_count.innerHTML = `
-        <div id="pag_bar_count4">
-
-        </div>
-        `
-    }
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
 })
