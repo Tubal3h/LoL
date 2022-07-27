@@ -1,15 +1,5 @@
 window.addEventListener('DOMContentLoaded', function () {
 
-
-    //    Twitch
-    new Twitch.Player("twitch-ad-1", {
-        channel: "loltyler1"
-    });
-
-    new Twitch.Player("twitch-ad-2", {
-        channel: "gosu"
-    });
-
     // Set the date we're counting down to
     var countDownDate = new Date("Aug 16, 2022 08:59:00").getTime();
 
@@ -38,5 +28,4 @@ window.addEventListener('DOMContentLoaded', function () {
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
-
 })
