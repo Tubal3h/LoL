@@ -108,4 +108,12 @@ iframe{width: 100%;height: 100%;}
 input {
     width: 100px;
 }
+
+.adSection {
+    display: flex;
+    flex-direction: column;
+=======
+.text-spacing {
+    letter-spacing: 2px;
+}
 /* -------------------------------------------------------------------------- */
