@@ -30,6 +30,8 @@
 
   <div class="container-fluid">
     <div class="row">
+
+      <!-- Navigation Bar -->
       <nav id="navBar" class="nav flex-md-column col-sm-1 justify-content-between">
         <div id="logo" class=" container-fluid">
           <h1 class="">
@@ -38,7 +40,6 @@
         </div>
 
         <div>
-          <!-- <a class="nav-link center" href="#">Link</a> -->
           <a class="nav-link center" href="#">
             <img id="Tutorial" src="img/ico/video-lesson.png" alt="">
             Tutorial
@@ -50,11 +51,12 @@
         </div>
       </nav>
 
-      <!-- mb-5 pb-5 -->
-
+      <!-- Main body -->
       <div id="calcArea" class="col-sm-8 d-flex">
 
         <div class="container-fluid justify-content-between calcAreaBox">
+
+          <!-- Intro Text -->
           <div class="row">
 
             <div class="col center centerBox" style="color: white">
@@ -64,25 +66,36 @@
 
           </div>
 
+          <!-- First row input -->
           <div class="row ">
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Token Needed Test phase
-              </h5>
-              <input type="number" id="test" onchange="onlyNumber(event)">
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+              <div>
+                <h5>
+                  Token Needed Test phase
+                </h5>
+              </div>
+              <div>
+                <input type="number" id="test" onchange="onlyNumber(event)">
+              </div>
             </div>
 
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Token Hold
-              </h5>
-              <input type="number">
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+              <div>
+                <h5>
+                  Token Hold
+                </h5>
+              </div>
+              <div>
+                <input type="number">
+              </div>
             </div>
 
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Time Needed
-              </h5>
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+              <div>
+                <h5>
+                  Time Needed
+                </h5>
+              </div>
               <div id="c-timeneed" class="d-flex justify-content-center">
 
                 <p id="time-day" class="text-spacing">00</p>
@@ -97,15 +110,20 @@
 
             </div>
 
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Pass Expard
-              </h5>
-              <p>16 August Time 8:59 AM (CEST)</p>
-              <p id="demo"></p>
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+              <div>
+                <h5>
+                  Pass Expard
+                </h5>
+              </div>
+              <div>
+                <p>16 August Time 8:59 AM (CEST)</p>
+                <p id="demo"></p>
+              </div>
             </div>
           </div>
 
+          <!-- Add Section in body -->
           <div class="row">
             <div class="col  center centerBox">
               <!-- AD -->
@@ -115,28 +133,37 @@
             </div>
           </div>
 
+          <!-- Second row input -->
           <div class="row">
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Game Select
-              </h5>
-              <form action="">
-                <!-- <label for="sel1" class="form-label">Select</label> -->
-                <select class="form-select" id="sel1" name="sellist1">
-                  <option>Draft</option>
-                  <option>ARAM</option>
-                  <option>TFT</option>
-                  <option>VS BOT</option>
-                </select>
-              </form>
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+              <div>
+                <h5>
+                  Game Select
+                </h5>
+
+              </div>
+              <div>
+                <form action="">
+                  <!-- <label for="sel1" class="form-label">Select</label> -->
+                  <select class="form-select" id="sel1" name="sellist1">
+                    <option>Draft</option>
+                    <option>ARAM</option>
+                    <option>TFT</option>
+                    <option>VS BOT</option>
+                  </select>
+                </form>
+
+              </div>
             </div>
 
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Game Time
-              </h5>
-              <div id="c-g-time" class="d-flex justify-content-center">
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-center">
+              <div>
+                <h5>
+                  Game Time
+                </h5>
+              </div>
 
+              <div id="c-g-time" class="d-flex justify-content-center">
                 <form action="">
                   <label for="sel1" class="form-label">H</label>
                   <select class="form-select" id="sel1" name="sellist1">
@@ -217,28 +244,40 @@
 
             </div>
 
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Win - Lose
-              </h5>
-              <form action="">
-                <!-- <label for="sel1" class="form-label">Select</label> -->
-                <select class="form-select" id="sel1" name="sellist1">
-                  <option>Win</option>
-                  <option>Lose</option>
-                </select>
-              </form>
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+              <div>
+                <h5>
+                  Win - Lose
+                </h5>
+              </div>
+              <div>
+                <form action="">
+                  <!-- <label for="sel1" class="form-label">Select</label> -->
+                  <select class="form-select" id="sel1" name="sellist1">
+                    <option>Win</option>
+                    <option>Lose</option>
+                  </select>
+                </form>
+              </div>
             </div>
 
-            <div class="col mx-2 center centerBox ">
-              <h5>
-                Points
-              </h5>
-              <p>0/200</p>
-              <input type="number">
+            <div class="col mx-2 center centerBox d-flex flex-column justify-content-center">
+              <div>
+                <h5>
+                  Points
+                </h5>
+              </div>
+              <div class="d-flex flex-column justify-content-center">
+                0/200
+                <div>
+                  <input type="number">
+
+                </div>
+              </div>
             </div>
           </div>
 
+          <!-- Row Buttons -->
           <div class="row">
             <div class="col  center centerBox">
               Reset
@@ -248,13 +287,11 @@
               Add
             </div>
           </div>
-
         </div>
-
       </div>
 
+      <!-- Add Section -->
       <div id="adArea" class="col-sm-3">
-        <!-- Some Add -->
 
         <div class="adSection">
           <div id="twitch-ad-1" class="twitch-embed"></div>
