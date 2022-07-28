@@ -39,15 +39,15 @@
           </h1>
         </div>
 
-        <div>
+        <div class="mb-5">
           <a class="nav-link center" href="#">
             <img id="Tutorial" src="img/ico/video-lesson.png" alt="">
             Tutorial
           </a>
-          <a class="nav-link center" href="#">
+          <!-- <a class="nav-link center" href="#">
             <img id="twitch" src="img/ico/twitch.png" alt="">
             Partner
-          </a>
+          </a> -->
         </div>
       </nav>
 
@@ -59,8 +59,8 @@
           <!-- Intro Text -->
           <div class="row">
 
-            <div class="col center centerBox" style="color: white">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero rem possimus. Rerum
+            <div class="col center centerBox  mt-5" style="color: white;">
+              <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero rem possimus. Rerum
                 placeat mollitia sequi fugit soluta, assumenda iusto?</p>
             </div>
 
@@ -74,8 +74,12 @@
                   Token Needed Test phase
                 </h5>
               </div>
-              <div>
-                <input type="number" id="test" onchange="onlyNumber(event)">
+              <div class="d-flex  justify-content-center">
+                <div id="tkn">
+                  <!-- <input type="number" id="test" onchange="onlyNumber(event)" class="m-2"> -->
+                  <input type="number" id="i_tkn" class="m-2">
+                  <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
+                </div>
               </div>
             </div>
 
@@ -85,8 +89,11 @@
                   Token Hold
                 </h5>
               </div>
-              <div>
-                <input type="number">
+              <div class="d-flex  justify-content-center">
+                <div id="tkn_h">
+                  <input type="number" id="i_tkn_h" class="m-2">
+                  <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
+                </div>
               </div>
             </div>
 
@@ -97,6 +104,20 @@
                 </h5>
               </div>
               <div id="c-timeneed" class="d-flex justify-content-center">
+                <p id="time-day" class="text-spacing">WIN =</p>
+
+                <p id="time-day" class="text-spacing">00</p>
+                <p id="time-p-day" class="text-spacing">D</p>
+
+                <p id="time-hr" class="text-spacing">00</p>
+                <p id="time-p-hr" class="text-spacing">H</p>
+
+                <p id="time-minute" class="text-spacing">00</p>
+                <p id="time-p-minute" class="text-spacing">M</p>
+              </div>
+
+              <div id="c-timeneed" class="d-flex justify-content-center">
+                <p id="time-day" class="text-spacing">Lose =</p>
 
                 <p id="time-day" class="text-spacing">00</p>
                 <p id="time-p-day" class="text-spacing">D</p>
@@ -143,13 +164,13 @@
 
               </div>
               <div>
-                <form action="">
+                <form action="" class="m-2">
                   <!-- <label for="sel1" class="form-label">Select</label> -->
                   <select class="form-select" id="sel1" name="sellist1">
-                    <option>Draft</option>
-                    <option>ARAM</option>
-                    <option>TFT</option>
-                    <option>VS BOT</option>
+                    <option value="1">Draft</option>
+                    <option value="2">ARAM</option>
+                    <option value="3">TFT</option>
+                    <option value="4">VS BOT</option>
                   </select>
                 </form>
 
@@ -164,18 +185,20 @@
               </div>
 
               <div id="c-g-time" class="d-flex justify-content-center">
-                <form action="">
-                  <label for="sel1" class="form-label">H</label>
+                <form action="" class="m-1">
+                  <!-- <label for="sel1" class="form-label">H</label> -->
                   <select class="form-select" id="sel1" name="sellist1">
+                    <option value="null">H</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                   </select>
                 </form>
 
-                <form action="">
-                  <label for="sel1" class="form-label">M</label>
+                <form action="" class="m-1">
+                  <!-- <label for="sel1" class="form-label">M</label> -->
                   <select class="form-select" id="sel1" name="sellist1">
+                    <option value="null">M</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -251,11 +274,11 @@
                 </h5>
               </div>
               <div>
-                <form action="">
+                <form action="" class="m-2">
                   <!-- <label for="sel1" class="form-label">Select</label> -->
                   <select class="form-select" id="sel1" name="sellist1">
-                    <option>Win</option>
-                    <option>Lose</option>
+                    <option value="1">Win</option>
+                    <option value="2">Lose</option>
                   </select>
                 </form>
               </div>
@@ -269,9 +292,9 @@
               </div>
               <div class="d-flex flex-column justify-content-center">
                 0/200
-                <div>
-                  <input type="number">
-
+                <div class="d-flex  justify-content-center">
+                  <input type="number" class="m-2">
+                  <button type="button" class="btn btn-primary m-2">Set</button>
                 </div>
               </div>
             </div>
@@ -279,11 +302,11 @@
 
           <!-- Row Buttons -->
           <div class="row">
-            <div class="col  center centerBox">
+            <div class="col  center centerBox m-1">
               Reset
             </div>
 
-            <div class="col  center centerBox">
+            <div class="col  center centerBox m-1">
               Add
             </div>
           </div>
@@ -292,17 +315,19 @@
 
       <!-- Add Section -->
       <div id="adArea" class="col-sm-3">
+        <div class="mb-2 d-flex justify-content-center ">
 
-        <div class="adSection">
-          <div id="twitch-ad-1" class="twitch-embed"></div>
-          <div id="twitch-ad-2" class="twitch-embed"></div>
-
-          <div class="container-fluid box">
-            Hello AD
-          </div>
-
-          <div class="container-fluid box">
-            Hello AD
+          <img id="twitch" src="img/ico/twitch.png" alt="" class="m-1 ">
+          <h5>Partner</h5>
+            
+        </div>
+        <div id="c-ads" class="adSection">
+          <div id="l-ads" data-current="0">
+            <div id="twitch-ad-1" class="twitch-embed"></div>
+            <div id="twitch-ad-2" class="twitch-embed"></div>
+            <div id="twitch-ad-3" class="twitch-embed"></div>
+            <div id="twitch-ad-4" class="twitch-embed"></div>
+            <div id="twitch-ad-5" class="twitch-embed"></div>
           </div>
         </div>
 
