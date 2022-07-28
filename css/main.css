@@ -38,7 +38,7 @@ nav {
 #logo {
     position: relative;
     transform: rotate(-90deg);
-    top: 510px;
+    top: 565px;
     /* width: 200%; */
     white-space:nowrap;
     /* height: 200px; */
@@ -70,7 +70,7 @@ nav {
 
 
 #calcArea {
-    background-image: url(../img/Star-Guardian-KaiSa.jpg);
+    background-image: url(https://cdn1.dotesports.com/wp-content/uploads/2022/07/11110032/Star-Guardian-KaiSa.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

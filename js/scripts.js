@@ -79,7 +79,6 @@ window.addEventListener('DOMContentLoaded', function () {
     // }
 
     
-
 })
 
 function onlyNumber(el){
@@ -106,7 +105,7 @@ function setTkn_H() {
     var tkn_h = $("#i_tkn_h").val();
     var tkn_h_n = parseInt(tkn_h);
     if (tkn_h_n >= 1 && 9999) {
-        $("#tkn_h").html(`<h6 id="num">${tkn_h}</h6>`);
+        $("#tkn_h").html(`<h6 id="num_h">${tkn_h}</h6>`);
     } else {
         $("#tkn_h").html(`
          <input type="number" id="i_tkn_h" class="m-2">
@@ -115,4 +114,173 @@ function setTkn_H() {
         `);
     }
 }
+/* ------------------------- POINTS VALUE ------------------------- */
+function setPoints() {
+
+    var ptn= $("#points").val();
+    var ptn_n = parseInt(ptn);
+    if (ptn_n >= 1 && 199) {
+        $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+    } else {
+        $("#ptn").html(`
+        <input type="number" class="m-2" id="points">
+        <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+        <p>Max 199</p>
+        `);
+    }
+    // console.log(ptn)
+}
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------- Time calculate ----------------------------- */
+
+function calcTime() {
+    // tkn needed
+    var tkn = $("#num").text();
+    // tkn hold
+    var tkn_h = $("#num_h").text();
+    // text to N
+    var a = parseInt(tkn);
+    var b = parseInt(tkn_h);
+
+    // console.log(tkn,tkn_h)
+    // console.log(a,b)
+
+    if (a >= 1 && 9999 & b >= 1 && 9999) {
+        var allTkn = a - b
+        // win s
+        var win = ((allTkn/10)*2000)
+        // lose s
+        var lose = ((allTkn / 10) * 3000)
+
+        function WinTime(n) {
+            var day = parseInt(n / (24 * 3600));
+
+            n = n % (24 * 3600);
+            var hour = parseInt(n / 3600);
+
+            n %= 3600;
+            var minutes = n / 60;
+
+            n %= 60;
+            var seconds = n;
+
+            $(".output").html(`
+                ${day} D ${hour} H ${minutes.toFixed()} M ${seconds.toFixed() } S
+            `)
+        }
+
+        var w = win
+        WinTime(w);
+
+        function LoseTime(n) {
+            var day = parseInt(n / (24 * 3600));
+
+            n = n % (24 * 3600);
+            var hour = parseInt(n / 3600);
+
+            n %= 3600;
+            var minutes = n / 60;
+
+            n %= 60;
+            var seconds = n;
+
+            $(".output1").html(`
+                ${day} D ${hour} H ${minutes.toFixed()} M ${seconds.toFixed()} S
+            `)
+        }
+
+        var l = lose
+        LoseTime(l);
+
+        $("#c_btn_time").html(` `)
+        
+    } else {
+        $("#result").html(`
+            ${tot}
+        `) 
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+function add() {
+    var game = $("#mode").val();
+    var gameTh = parseInt($("#gametime_h").val());
+    var gameTm = parseInt($("#gametime_m").val());
+    var Wl = $("#win_lose").val();
+
+    var GameTime = (gameTh * 60) + gameTm;
+
+    if (GameTime == 0) {
+        $("#notime").html(`<h5>Put the Game Time</h5>`)
+    } else {
+        if (game == 1) {
+            if (Wl == 1) {
+                var p = GameTime * 6;
+                var myP = parseInt($("#ptn_n").text());
+                console.log(myP)
+                console.log(p)
+                
+                var NewMyP = parseInt(myP + p);
+                console.log(NewMyP)
+                if (NewMyP >= 200) {
+
+                    var ptn = parseInt(NewMyP - 200);
+                    $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                    var TknH = parseInt($("#tkn_h").text());
+                    var NewTknH = TknH + 10;
+                    $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                    calcTime();
+                } else {
+                    
+                    var ptn1 = parseInt(NewMyP + p);
+                    if (ptn1 >= 200) {
+                        var ptn2 = parseInt(ptn1 - 200);
+                        // console.log("ecco")
+                    }
+                    $("#ptn").html(`<h6 id="ptn_n">${ptn2}</h6><h6 id="ptn_n">/200</h6>`);
+                }
+            } else {
+                var p = GameTime * 4;
+                console.log(p)
+                var myP = parseInt($("#ptn_n").text());
+                console.log(myP)
+                console.log(p)
+                console.log("ecco")
+
+                var NewMyP = parseInt(myP + p);
+                console.log(NewMyP)
+                if (NewMyP >= 200) {
+
+                    var ptn = parseInt(NewMyP - 200);
+                    $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                    var TknH = parseInt($("#tkn_h").text());
+                    var NewTknH = TknH + 10;
+                    $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                    calcTime();
+                } else {
+
+                    var ptn1 = parseInt(NewMyP + p);
+                    if (ptn1 >= 200) {
+                        var ptn2 = parseInt(ptn1 - 200);
+                        // console.log("ecco")
+                    }
+                    $("#ptn").html(`<h6 id="ptn_n">${ptn2}</h6><h6 id="ptn_n">/200</h6>`);
+                }
+            }
+        } else {
+            console.log("other")
+        }
+    }
+
+    console.log(GameTime)
+    // console.log(gameTh)
+    // console.log(gameTm)
+    
+}
+
 /* -------------------------------------------------------------------------- */
