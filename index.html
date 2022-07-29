@@ -34,13 +34,15 @@
       <!-- Navigation Bar -->
       <nav id="navBar" class="nav flex-md-column col-sm-1 justify-content-between">
         <div id="logo" class=" container-fluid">
-          <h1 class="">
-            League Pass Calculator
-          </h1>
+          <a href="#">
+            <h1 class="">
+              League Pass Calculator
+            </h1>
+          </a>
         </div>
 
         <div class="mb-5">
-          <a class="nav-link center" href="#">
+          <a class="nav-link center" href="pages/tutorial.html">
             <img id="Tutorial" src="img/ico/video-lesson.png" alt="">
             Tutorial
           </a>
@@ -52,7 +54,7 @@
       </nav>
 
       <!-- Main body -->
-      <div id="calcArea" class="col-sm-8 d-flex">
+      <div id="calcArea" class="col-sm-8 d-flex bkgLol">
 
         <div class="container-fluid justify-content-between calcAreaBox">
 
@@ -107,17 +109,17 @@
                 <p id="time-day" class="text-spacing">WIN = </p>
                 <p class="output">00 H 00 M 00 S</p>
               </div>
-              
+
               <div id="c-timeneed" class="d-flex justify-content-center">
                 <p id="time-day" class="text-spacing">Lose =</p>
 
                 <p class="output1">00 H 00 M 00 S</p>
-                
+
               </div>
               <div id="c_btn_time">
                 <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="calcTime()">Set</button>
               </div>
-              
+
             </div>
 
             <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
@@ -349,8 +351,8 @@
                 </h5>
               </div>
               <div class="d-flex flex-column justify-content-center">
-                
-                <div class="d-flex  justify-content-center" >
+
+                <div class="d-flex  justify-content-center">
                   <div id="ptn" class="d-flex">
                     <input type="number" class="m-2" id="points">
                     <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
@@ -363,11 +365,11 @@
           <!-- Row Buttons -->
           <div class="row">
             <!-- <div class="col  center centerBox m-1"> -->
-              <button type="button" class="btn btn-primary m-2 col  center  m-1" onclick="setPoints()">Reset</button>
+            <button type="button" class="btn btn-primary m-2 col  center  m-1" onclick="setPoints()">Reset</button>
             <!-- </div> -->
 
             <!-- <div class="col  center centerBox m-1" > -->
-              <button type="button" class="btn btn-primary m-2 col  center  m-1" onclick="add()">Add</button>
+            <button type="button" class="btn btn-primary m-2 col  center  m-1" onclick="add()">Add</button>
             <!-- </div> -->
           </div>
         </div>
@@ -377,9 +379,12 @@
       <div id="adArea" class="col-sm-3">
         <div class="mb-2 d-flex justify-content-center ">
 
-          <img id="twitch" src="img/ico/twitch.png" alt="" class="m-1 ">
-          <h5>Partner</h5>
-            
+          <div>
+            <a href="pages/partner.html" class="d-flex">
+              <img id="twitch" src="img/ico/twitch.png" alt="" class="m-1 ">
+              <h5>Partner</h5>
+            </a>
+          </div>
         </div>
         <div id="c-ads" class="adSection">
           <div id="l-ads" data-current="0">
