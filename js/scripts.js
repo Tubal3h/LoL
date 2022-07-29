@@ -1,3 +1,5 @@
+const { exit } = require("process");
+
 window.addEventListener('DOMContentLoaded', function () {
 
 
@@ -9,7 +11,7 @@ window.addEventListener('DOMContentLoaded', function () {
     new Twitch.Player("twitch-ad-2", {
         channel: "pow3rtv"
     });
-    
+
     new Twitch.Player("twitch-ad-3", {
         channel: "moonryde"
     });
@@ -23,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
     /* --------------------------------- scroll --------------------------------- */
     /* ------------------------------- da rivedere ------------------------------ */
-    
+
     // it's a div, that holds your news
     // it holds ul with news in li elements
     // var div = document.getElementById("c-ads");
@@ -41,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //     }
     // });
 
-/* -------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------- */
     // Set the date we're counting down to
     var countDownDate = new Date("Aug 16, 2022 08:59:00").getTime();
 
@@ -78,10 +80,18 @@ window.addEventListener('DOMContentLoaded', function () {
     //     inputs[i].addEventListener('keypress', onlyNumber(inputs[i]));
     // }
 
-    
+
 })
 
-function onlyNumber(el){
+// Global Variables
+
+var pointsSetted = 0;
+var tknNeedSet = 0;
+var tknGotSet = 0;
+
+// --------------------
+
+function onlyNumber(el) {
     console.log(el.target)
 }
 /* ------------------------- TOKEN NEED STAMP VALUE ------------------------- */
@@ -89,11 +99,14 @@ function setTkn() {
 
     var tkn = $("#i_tkn").val();
     var tkn_n = parseInt(tkn);
-    if (tkn_n >= 1 && 9999) {
+    if (tkn_n < 10000 && tkn_n >= 0) {
         $("#tkn").html(`<h6 id="num">${tkn}</h6>`);
+        tknNeedSet = 1;
+        if (tknGotSet)
+            calcTime();
     } else {
         $("#tkn").html(`
-         <input type="number" id="i_tkn" class="m-2">
+         <input type="number" id="i_tkn" class="m-2 noInput">
         <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
         <p>Number Invalid</p>
         `);
@@ -104,31 +117,57 @@ function setTkn_H() {
 
     var tkn_h = $("#i_tkn_h").val();
     var tkn_h_n = parseInt(tkn_h);
-    if (tkn_h_n >= 1 && 9999) {
-        $("#tkn_h").html(`<h6 id="num_h">${tkn_h}</h6>`);
-    } else {
+
+    // Check if need is setted
+    if (!tknNeedSet) {
+        console.log("setToken");
         $("#tkn_h").html(`
-         <input type="number" id="i_tkn_h" class="m-2">
+         <input type="number" id="i_tkn_h" class="m-2 noInput">
+        <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
+        <p>Set Token Needed first</p>
+        `);
+    } else {
+
+
+
+        // Validator
+        if (tkn_h_n < 10000 && tkn_h_n >= 0) {
+            $("#tkn_h").html(`<h6 id="num_h">${tkn_h}</h6>`);
+            tknGotSet = 1;
+            if (tknNeedSet)
+                calcTime();
+        } else {
+            $("#tkn_h").html(`
+         <input type="number" id="i_tkn_h noInput" class="m-2">
         <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
         <p>Number Invalid</p>
         `);
+        }
     }
 }
 /* ------------------------- POINTS VALUE ------------------------- */
 function setPoints() {
 
-    var ptn= $("#points").val();
-    var ptn_n = parseInt(ptn);
-    if (ptn_n >= 1 && 199) {
+    pointsSetted = 1;
+    var ptn = $("#points").val();
+    var ptn_n = parseInt($("#points").val());
+    if (ptn_n < 200) {
         $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
     } else {
         $("#ptn").html(`
-        <input type="number" class="m-2" id="points">
+        <input type="number" class="m-2 noInput" id="points">
         <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
         <p>Max 199</p>
         `);
     }
     // console.log(ptn)
+}
+
+function resetPnt() {
+    $("#ptn").html(`
+    <input type="number" class="m-2" id="points">
+    <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+        `);
 }
 /* -------------------------------------------------------------------------- */
 
@@ -149,7 +188,7 @@ function calcTime() {
     if (a >= 1 && 9999 & b >= 1 && 9999) {
         var allTkn = a - b
         // win s
-        var win = ((allTkn/10)*2000)
+        var win = ((allTkn / 10) * 2000)
         // lose s
         var lose = ((allTkn / 10) * 3000)
 
@@ -166,7 +205,7 @@ function calcTime() {
             var seconds = n;
 
             $(".output").html(`
-                ${day} D ${hour} H ${minutes.toFixed()} M ${seconds.toFixed() } S
+                ${day} D ${hour} H ${minutes.toFixed()} M ${seconds.toFixed()} S
             `)
         }
 
@@ -194,11 +233,11 @@ function calcTime() {
         LoseTime(l);
 
         $("#c_btn_time").html(` `)
-        
+
     } else {
         $("#result").html(`
             ${tot}
-        `) 
+        `)
     }
 }
 
@@ -207,300 +246,353 @@ function calcTime() {
 
 function add() {
     var game = $("#mode").val();
-    var gameTh = parseInt($("#gametime_h").val());
-    var gameTm = parseInt($("#gametime_m").val());
-    var gameTs = parseInt($("#gametime_s").val());
+    var rawGameTh = $("#gametime_h");
+    var rawGameTm = $("#gametime_m");
+    var rawGameTs = $("#gametime_s");
+
+    var gameTh;
+    var gameTm;
+    var gameTs;
     var Wl = $("#win_lose").val();
+    
+    // Check if time is setted
+    if(rawGameTh.val() == "" || rawGameTm.val() == "" || rawGameTs.val() == "" ){
+        console.log(rawGameTh);
+        if(rawGameTh.val() == ""){
+            rawGameTh[0].classList.add("noInput");
+        } else {
+            rawGameTh[0].classList.remove("noInput");
+        }
 
-    var GameTime = (gameTh * 60) + gameTm;
+        if(rawGameTm.val() == ""){
+            rawGameTm[0].classList.add("noInput");
+        } else {
+            rawGameTm[0].classList.remove("noInput");
+        }
 
-    switch (game) {
-        case "1":
-            if (GameTime == 0) {
-                $("#notime").html(`<h5>Put the Game Time</h5>`)
-            } else {
-                if (game == 1) {
-                    if (Wl == 1) {
-                        var p = GameTime * 6;
+        if(rawGameTs.val() == ""){
+            rawGameTs[0].classList.add("noInput");
+        } else {
+            rawGameTs[0].classList.remove("noInput");
+        }
+        return;
+    } else {
+        rawGameTh[0].classList.remove("noInput");
+        rawGameTm[0].classList.remove("noInput");
+        rawGameTs[0].classList.remove("noInput");
 
-                        var myP = parseInt($("#ptn_n").text());
+        gameTh = parseInt(rawGameTh.val());
+        gameTm = parseInt(rawGameTh.val());
+        gameTs = parseInt(rawGameTh.val());
+    }
 
-                        console.log(myP)
-                        console.log(p)
+    if (pointsSetted && tknGotSet && tknNeedSet) {
+        var GameTime = (gameTh * 60) + gameTm;
 
-                        var NewMyP = parseInt(myP + p);
-                        console.log(NewMyP)
+        switch (game) {
+            case "1":
+                if (GameTime == 0) {
+                    $("#notime").html(`<h5>Put the Game Time</h5>`)
+                } else {
+                    if (game == 1) {
+                        if (Wl == 1) {
+                            var p = GameTime * 6;
 
-                        if (gameTs >= 10) {
+                            var myP = parseInt($("#ptn_n").text());
 
-                            var clc_s = parseInt(gameTs / 10);
-                            var NewMyP = NewMyP + clc_s;
-                        }
+                            console.log(myP)
+                            console.log(p)
 
-                        if (NewMyP >= 200) {
+                            var NewMyP = parseInt(myP + p);
+                            console.log(NewMyP)
 
-                            // var ptn = parseInt(NewMyP - 200);
-                            var ptn = parseInt(NewMyP % 200);
-                            var ptn1 = parseInt(NewMyP / 200);
+                            if (gameTs >= 10) {
 
+                                var clc_s = parseInt(gameTs / 10);
+                                var NewMyP = NewMyP + clc_s;
+                            }
 
+                            if (NewMyP >= 200) {
 
-                            console.log("maggiore")
-                            // console.log(ptnR)
-
-                            $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
-
-                            var TknH = parseInt($("#tkn_h").text());
-                            var NewTknH = TknH + (ptn1 * 10);
+                                // var ptn = parseInt(NewMyP - 200);
+                                var ptn = parseInt(NewMyP % 200);
+                                var ptn1 = parseInt(NewMyP / 200);
 
 
 
-                            $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
-                            calcTime();
+                                console.log("maggiore")
+                                // console.log(ptnR)
+
+                                $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                                var TknH = parseInt($("#tkn_h").text());
+                                var NewTknH = TknH + (ptn1 * 10);
+
+
+
+                                $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                                calcTime();
+                            } else {
+
+                                // var ptn1 = parseInt(NewMyP + p);
+
+                                $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                            }
                         } else {
+                            var p = GameTime * 4;
+                            console.log(p)
+                            var myP = parseInt($("#ptn_n").text());
+                            console.log(myP)
+                            console.log(p)
+                            // console.log("ecco")
 
-                            // var ptn1 = parseInt(NewMyP + p);
+                            var NewMyP = parseInt(myP + p);
+                            if (gameTs >= 10) {
 
-                            $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                                var clc_s = parseInt(gameTs / 10);
+                                var NewMyP = NewMyP + clc_s;
+                            }
+                            // console.log(NewMyP)
+                            if (NewMyP >= 200) {
+
+                                // var ptn = parseInt(NewMyP - 200);
+                                var ptn = parseInt(NewMyP % 200);
+                                var ptn1 = parseInt(NewMyP / 200);
+
+
+
+                                console.log("maggiore")
+                                // console.log(ptnR)
+
+                                $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                                var TknH = parseInt($("#tkn_h").text());
+                                var NewTknH = TknH + (ptn1 * 10);
+
+
+
+                                $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                                calcTime();
+                            } else {
+
+
+                                $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                            }
                         }
                     } else {
-                        var p = GameTime * 4;
-                        console.log(p)
-                        var myP = parseInt($("#ptn_n").text());
-                        console.log(myP)
-                        console.log(p)
-                        // console.log("ecco")
-
-                        var NewMyP = parseInt(myP + p);
-                        if (gameTs >= 10) {
-
-                            var clc_s = parseInt(gameTs / 10);
-                            var NewMyP = NewMyP + clc_s;
-                        }
-                        // console.log(NewMyP)
-                        if (NewMyP >= 200) {
-
-                            // var ptn = parseInt(NewMyP - 200);
-                            var ptn = parseInt(NewMyP % 200);
-                            var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                            console.log("maggiore")
-                            // console.log(ptnR)
-
-                            $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
-
-                            var TknH = parseInt($("#tkn_h").text());
-                            var NewTknH = TknH + (ptn1 * 10);
-
-
-
-                            $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
-                            calcTime();
-                        } else {
-
-
-                            $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
-                        }
+                        console.log("Error1")
                     }
-                } else {
-                    console.log("Error1")
                 }
-            }
-            break;
+                break;
 
-        case "2":
-            if (GameTime == 0) {
-                $("#notime").html(`<h5>Put the Game Time</h5>`)
-            } else {
-                if (game == 2) {
-                    if (Wl == 1) {
-                        var p = GameTime * 6;
+            case "2":
+                if (GameTime == 0) {
+                    $("#notime").html(`<h5>Put the Game Time</h5>`)
+                } else {
+                    if (game == 2) {
+                        if (Wl == 1) {
+                            var p = GameTime * 6;
 
-                        var myP = parseInt($("#ptn_n").text());
+                            var myP = parseInt($("#ptn_n").text());
 
-                        console.log(myP)
-                        console.log(p)
+                            console.log(myP)
+                            console.log(p)
 
-                        var NewMyP = parseInt(myP + p);
-                        console.log(NewMyP)
-                        if (gameTs >= 10) {
+                            var NewMyP = parseInt(myP + p);
+                            console.log(NewMyP)
+                            if (gameTs >= 10) {
 
-                            var clc_s = parseInt(gameTs / 10);
-                            var NewMyP = NewMyP + clc_s;
-                        }
+                                var clc_s = parseInt(gameTs / 10);
+                                var NewMyP = NewMyP + clc_s;
+                            }
 
-                        if (NewMyP >= 200) {
+                            if (NewMyP >= 200) {
 
-                            // var ptn = parseInt(NewMyP - 200);
-                            var ptn = parseInt(NewMyP % 200);
-                            var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                            console.log("maggiore")
-                            // console.log(ptnR)
-
-                            $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
-
-                            var TknH = parseInt($("#tkn_h").text());
-                            var NewTknH = TknH + (ptn1 * 10);
+                                // var ptn = parseInt(NewMyP - 200);
+                                var ptn = parseInt(NewMyP % 200);
+                                var ptn1 = parseInt(NewMyP / 200);
 
 
 
-                            $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
-                            calcTime();
+                                console.log("maggiore")
+                                // console.log(ptnR)
+
+                                $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                                var TknH = parseInt($("#tkn_h").text());
+                                var NewTknH = TknH + (ptn1 * 10);
+
+
+
+                                $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                                calcTime();
+                            } else {
+
+                                // var ptn1 = parseInt(NewMyP + p);
+
+                                $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                            }
                         } else {
+                            var p = GameTime * 3;
+                            console.log(p)
+                            var myP = parseInt($("#ptn_n").text());
+                            console.log(myP)
+                            console.log(p)
+                            console.log("ecco")
 
-                            // var ptn1 = parseInt(NewMyP + p);
+                            var NewMyP = parseInt(myP + p);
+                            if (gameTs >= 10) {
 
-                            $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                                var clc_s = parseInt(gameTs / 10);
+                                var NewMyP = NewMyP + clc_s;
+                            }
+                            // console.log(NewMyP)
+                            if (NewMyP >= 200) {
+
+                                // var ptn = parseInt(NewMyP - 200);
+                                var ptn = parseInt(NewMyP % 200);
+                                var ptn1 = parseInt(NewMyP / 200);
+
+
+
+                                console.log("maggiore")
+                                // console.log(ptnR)
+
+                                $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                                var TknH = parseInt($("#tkn_h").text());
+                                var NewTknH = TknH + (ptn1 * 10);
+
+
+
+                                $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                                calcTime();
+                            } else {
+
+
+                                $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                            }
                         }
                     } else {
-                        var p = GameTime * 3;
-                        console.log(p)
-                        var myP = parseInt($("#ptn_n").text());
-                        console.log(myP)
-                        console.log(p)
-                        console.log("ecco")
-
-                        var NewMyP = parseInt(myP + p);
-                        if (gameTs >= 10) {
-
-                            var clc_s = parseInt(gameTs / 10);
-                            var NewMyP = NewMyP + clc_s;
-                        }
-                        // console.log(NewMyP)
-                        if (NewMyP >= 200) {
-
-                            // var ptn = parseInt(NewMyP - 200);
-                            var ptn = parseInt(NewMyP % 200);
-                            var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                            console.log("maggiore")
-                            // console.log(ptnR)
-
-                            $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
-
-                            var TknH = parseInt($("#tkn_h").text());
-                            var NewTknH = TknH + (ptn1 * 10);
-
-
-
-                            $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
-                            calcTime();
-                        } else {
-
-
-                            $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
-                        }
+                        console.log("Error2")
                     }
-                } else {
-                    console.log("Error2")
                 }
-            }
-            break;
+                break;
 
-        case "3":
-            if (GameTime == 0) {
-                $("#notime").html(`<h5>Put the Game Time</h5>`)
-            } else {
-                if (game == 3) {
-                    if (Wl == 1) {
-                        var p = GameTime * 2;
+            case "3":
+                if (GameTime == 0) {
+                    $("#notime").html(`<h5>Put the Game Time</h5>`)
+                } else {
+                    if (game == 3) {
+                        if (Wl == 1) {
+                            var p = GameTime * 2;
 
-                        var myP = parseInt($("#ptn_n").text());
+                            var myP = parseInt($("#ptn_n").text());
 
-                        console.log(myP)
-                        console.log(p)
+                            console.log(myP)
+                            console.log(p)
 
-                        var NewMyP = parseInt(myP + p);
-                        console.log(NewMyP)
-                        if (gameTs >= 10) {
+                            var NewMyP = parseInt(myP + p);
+                            console.log(NewMyP)
+                            if (gameTs >= 10) {
 
-                            var clc_s = parseInt(gameTs / 10);
-                            var NewMyP = NewMyP + clc_s;
-                        }
+                                var clc_s = parseInt(gameTs / 10);
+                                var NewMyP = NewMyP + clc_s;
+                            }
 
-                        if (NewMyP >= 200) {
+                            if (NewMyP >= 200) {
 
-                            // var ptn = parseInt(NewMyP - 200);
-                            var ptn = parseInt(NewMyP % 200);
-                            var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                            console.log("maggiore")
-                            // console.log(ptnR)
-
-                            $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
-
-                            var TknH = parseInt($("#tkn_h").text());
-                            var NewTknH = TknH + (ptn1 * 10);
+                                // var ptn = parseInt(NewMyP - 200);
+                                var ptn = parseInt(NewMyP % 200);
+                                var ptn1 = parseInt(NewMyP / 200);
 
 
 
-                            $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
-                            calcTime();
+                                console.log("maggiore")
+                                // console.log(ptnR)
+
+                                $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                                var TknH = parseInt($("#tkn_h").text());
+                                var NewTknH = TknH + (ptn1 * 10);
+
+
+
+                                $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                                calcTime();
+                            } else {
+
+                                // var ptn1 = parseInt(NewMyP + p);
+
+                                $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                            }
                         } else {
+                            var p = GameTime * 1;
+                            console.log(p)
+                            var myP = parseInt($("#ptn_n").text());
+                            console.log(myP)
+                            console.log(p)
+                            console.log("ecco")
 
-                            // var ptn1 = parseInt(NewMyP + p);
+                            var NewMyP = parseInt(myP + p);
 
-                            $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                            if (gameTs >= 10) {
+
+                                var clc_s = parseInt(gameTs / 10);
+                                var NewMyP = NewMyP + clc_s;
+                            }
+                            // console.log(NewMyP)
+                            if (NewMyP >= 200) {
+
+                                // var ptn = parseInt(NewMyP - 200);
+                                var ptn = parseInt(NewMyP % 200);
+                                var ptn1 = parseInt(NewMyP / 200);
+
+
+
+                                console.log("maggiore")
+                                // console.log(ptnR)
+
+                                $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
+
+                                var TknH = parseInt($("#tkn_h").text());
+                                var NewTknH = TknH + (ptn1 * 10);
+
+
+
+                                $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
+                                calcTime();
+                            } else {
+
+
+                                $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
+                            }
                         }
                     } else {
-                        var p = GameTime * 1;
-                        console.log(p)
-                        var myP = parseInt($("#ptn_n").text());
-                        console.log(myP)
-                        console.log(p)
-                        console.log("ecco")
-
-                        var NewMyP = parseInt(myP + p);
-
-                        if (gameTs >= 10) {
-
-                            var clc_s = parseInt(gameTs / 10);
-                            var NewMyP = NewMyP + clc_s;
-                        }
-                        // console.log(NewMyP)
-                        if (NewMyP >= 200) {
-
-                            // var ptn = parseInt(NewMyP - 200);
-                            var ptn = parseInt(NewMyP % 200);
-                            var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                            console.log("maggiore")
-                            // console.log(ptnR)
-
-                            $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
-
-                            var TknH = parseInt($("#tkn_h").text());
-                            var NewTknH = TknH + (ptn1 * 10);
-
-
-
-                            $("#tkn_h").html(`<h6 id="num_h">${NewTknH}</h6>`);
-                            calcTime();
-                        } else {
-
-
-                            $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
-                        }
+                        console.log("Error3")
                     }
-                } else {
-                    console.log("Error3")
                 }
-            }
-            break;
+                break;
 
-        default:
-            break;
+            default:
+                break;
+        }
+    } else {
+        if(!tknGotSet){
+            $("#tkn_h").html(`
+         <input type="number" id="i_tkn_h" class="m-2 noInput">
+        <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
+        <p>Set Holded Token</p>
+        `);
+        }
+
+        if(!tknNeedSet){
+            $("#tkn").html(`
+         <input type="number" id="i_tkn" class="m-2 noInput">
+        <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
+        <p>Set Needed Token</p>
+        `);
+        }
     }
 
 }
