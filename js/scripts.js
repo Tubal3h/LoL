@@ -88,6 +88,7 @@ window.addEventListener('DOMContentLoaded', function () {
 var pointsSetted = 0;
 var tknNeedSet = 0;
 var tknGotSet = 0;
+var tknNeedValue;
 
 // --------------------
 
@@ -102,6 +103,7 @@ function setTkn() {
     if (tkn_n < 10000 && tkn_n >= 0) {
         $("#tkn").html(`<h6 id="num">${tkn}</h6>`);
         tknNeedSet = 1;
+        tknNeedValue = tkn_n;
         if (tknGotSet)
             calcTime();
     } else {
@@ -127,18 +129,19 @@ function setTkn_H() {
         <p>Set Token Needed first</p>
         `);
     } else {
+        console.log(tkn_h_n);
 
 
 
         // Validator
-        if (tkn_h_n < 10000 && tkn_h_n >= 0) {
+        if (tkn_h_n < 10000 && tkn_h_n >= 0 && tkn_h_n < parseInt(tknNeedValue)) {
             $("#tkn_h").html(`<h6 id="num_h">${tkn_h}</h6>`);
             tknGotSet = 1;
             if (tknNeedSet)
                 calcTime();
         } else {
             $("#tkn_h").html(`
-         <input type="number" id="i_tkn_h noInput" class="m-2">
+         <input type="number" id="i_tkn_h" class="m-2 noInput">
         <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
         <p>Number Invalid</p>
         `);
