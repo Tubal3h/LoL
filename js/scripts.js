@@ -230,9 +230,11 @@ function add() {
 
                         var NewMyP = parseInt(myP + p);
                         console.log(NewMyP)
-                        
-                        if (gameTs >= 30) {
-                            var NewMyP = NewMyP + 3;
+
+                        if (gameTs >= 10) {
+
+                            var clc_s = parseInt(gameTs / 10);
+                            var NewMyP = NewMyP + clc_s;
                         }
 
                         if (NewMyP >= 200) {
@@ -267,10 +269,15 @@ function add() {
                         var myP = parseInt($("#ptn_n").text());
                         console.log(myP)
                         console.log(p)
-                        console.log("ecco")
+                        // console.log("ecco")
 
                         var NewMyP = parseInt(myP + p);
-                        console.log(NewMyP)
+                        if (gameTs >= 10) {
+
+                            var clc_s = parseInt(gameTs / 10);
+                            var NewMyP = NewMyP + clc_s;
+                        }
+                        // console.log(NewMyP)
                         if (NewMyP >= 200) {
 
                             // var ptn = parseInt(NewMyP - 200);
@@ -318,8 +325,10 @@ function add() {
 
                         var NewMyP = parseInt(myP + p);
                         console.log(NewMyP)
-                        if (gameTs >= 30) {
-                            var NewMyP = NewMyP + 3;
+                        if (gameTs >= 10) {
+
+                            var clc_s = parseInt(gameTs / 10);
+                            var NewMyP = NewMyP + clc_s;
                         }
 
                         if (NewMyP >= 200) {
@@ -357,7 +366,12 @@ function add() {
                         console.log("ecco")
 
                         var NewMyP = parseInt(myP + p);
-                        console.log(NewMyP)
+                        if (gameTs >= 10) {
+
+                            var clc_s = parseInt(gameTs / 10);
+                            var NewMyP = NewMyP + clc_s;
+                        }
+                        // console.log(NewMyP)
                         if (NewMyP >= 200) {
 
                             // var ptn = parseInt(NewMyP - 200);
@@ -405,8 +419,10 @@ function add() {
 
                         var NewMyP = parseInt(myP + p);
                         console.log(NewMyP)
-                        if (gameTs >= 30) {
-                            var NewMyP = NewMyP + 3;
+                        if (gameTs >= 10) {
+
+                            var clc_s = parseInt(gameTs / 10);
+                            var NewMyP = NewMyP + clc_s;
                         }
 
                         if (NewMyP >= 200) {
@@ -444,7 +460,13 @@ function add() {
                         console.log("ecco")
 
                         var NewMyP = parseInt(myP + p);
-                        console.log(NewMyP)
+
+                        if (gameTs >= 10) {
+
+                            var clc_s = parseInt(gameTs / 10);
+                            var NewMyP = NewMyP + clc_s;
+                        }
+                        // console.log(NewMyP)
                         if (NewMyP >= 200) {
 
                             // var ptn = parseInt(NewMyP - 200);
