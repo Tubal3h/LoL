@@ -38,7 +38,7 @@ nav {
 #logo {
     position: relative;
     transform: rotate(-90deg);
-    top: 565px;
+    top: 545px;
     /* width: 200%; */
     white-space:nowrap;
     /* height: 200px; */
@@ -55,17 +55,28 @@ nav {
 
 }
 
-#twitch {
+.ico {
     width: 20px;
     height: 20px;
 }
 
 #Tutorial {
+    
     width: 20px;
     height: 20px;
 }
 
+#c-pop-up {
+    position: relative;
+}
 
+.pop-up {
+    top: -50px;
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    background-color: black;
+}
 
 
 
@@ -139,3 +150,13 @@ input {
 .form-label {
     margin-bottom: 0px;
 }
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------------- game time ------------------------------- */
+
+/* #gametime_h {
+    width: ;
+} */
+
+
+/* -------------------------------------------------------------------------- */

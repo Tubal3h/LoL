@@ -71,10 +71,17 @@
           <!-- First row input -->
           <div class="row ">
             <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
-              <div>
+              <div class="d-flex justify-content-center">
                 <h5>
                   Token Needed
                 </h5>
+
+                <div id="c-pop-up" class="">
+                  <!-- <div id="" class="pop-up box">
+                    test
+                  </div> -->
+                  <img src="img/ico/answer.png" alt="" class="ico m-1">
+                </div>
               </div>
               <div class="d-flex  justify-content-center">
                 <div id="tkn">
@@ -90,6 +97,7 @@
                 <h5>
                   Token Hold
                 </h5>
+                
               </div>
               <div class="d-flex  justify-content-center">
                 <div id="tkn_h">
@@ -176,18 +184,30 @@
               </div>
 
               <div id="c-g-time" class="d-flex justify-content-center">
-                <form action="" class="m-1">
-                  <!-- <label for="sel1" class="form-label">H</label> -->
+                <!-- <form action="" class="m-1">
+                  <label for="sel1" class="form-label">H</label>
                   <select class="form-select" id="gametime_h" name="sellist1">
                     <option value="0">H</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                   </select>
-                </form>
+                </form> -->
 
-                <form action="" class="m-1">
-                  <!-- <label for="sel1" class="form-label">M</label> -->
+                <div id="" class=" m-1">
+                  <input type="number" id="gametime_h" placeholder="Hours">
+                </div>
+
+                <div id="" class=" m-1">
+                  <input type="number" id="gametime_m" placeholder="Minutes">
+                </div>
+
+                <div id="" class=" m-1">
+                  <input type="number" id="gametime_s" placeholder="Seconds">
+                </div>
+
+                <!-- <form action="" class="m-1">
+                  <label for="sel1" class="form-label">M</label>
                   <select class="form-select" id="gametime_m" name="sellist1">
                     <option value="0">M</option>
                     <option value="0">0</option>
@@ -250,12 +270,11 @@
                     <option value="57">57</option>
                     <option value="58">58</option>
                     <option value="59">59</option>
-                    <option value="60">60</option>
                   </select>
-                </form>
+                </form> -->
                 
-                <form action="" class="m-1">
-                  <!-- <label for="sel1" class="form-label">M</label> -->
+                <!-- <form action="" class="m-1">
+                  <label for="sel1" class="form-label">M</label>
                   <select class="form-select" id="gametime_s" name="sellist1">
                     <option value="0">S</option>
                     <option value="0">0</option>
@@ -318,9 +337,8 @@
                     <option value="57">57</option>
                     <option value="58">58</option>
                     <option value="59">59</option>
-                    <option value="60">60</option>
                   </select>
-                </form>
+                </form> -->
                 
               </div>
               <div id="notime">
@@ -381,7 +399,7 @@
 
           <div>
             <a href="pages/partner.html" class="d-flex">
-              <img id="twitch" src="img/ico/twitch.png" alt="" class="m-1 ">
+              <img id="twitch" src="img/ico/twitch.png" alt="" class="m-1 ico">
               <h5>Partner</h5>
             </a>
           </div>
