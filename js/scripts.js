@@ -1,5 +1,3 @@
-const { exit } = require("process");
-
 window.addEventListener('DOMContentLoaded', function () {
 
 
