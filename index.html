@@ -97,7 +97,7 @@
                 <div class="d-flex  justify-content-center">
                   <div id="tkn">
                     <!-- <input type="number" id="test" onchange="onlyNumber(event)" class="m-2"> -->
-                    <input type="number" id="i_tkn" class="m-2">
+                    <input type="number" id="i_tkn" class="m-2" onkeypress="enterKey(event, 'btn_tkn')">
                     <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
                   </div>
                 </div>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="d-flex  justify-content-center">
                   <div id="tkn_h">
-                    <input type="number" id="i_tkn_h" class="m-2">
+                    <input type="number" id="i_tkn_h" class="m-2" onkeypress="enterKey(event, 'btn_tkn_h')">
                     <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
                   </div>
                 </div>
@@ -382,8 +382,8 @@
 
                 <div class="d-flex  justify-content-center">
                   <div id="ptn" class="d-flex">
-                    <input type="number" class="m-2" id="points">
-                    <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+                    <input type="number" class="m-2" id="points" onkeypress="enterKey(event, 'btnPoints')">
+                    <button id="btnPoints" type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
                   </div>
                 </div>
               </div>

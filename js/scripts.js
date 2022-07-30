@@ -83,7 +83,6 @@ window.addEventListener('DOMContentLoaded', function () {
     //     inputs[i].addEventListener('keypress', onlyNumber(inputs[i]));
     // }
 
-
 })
 
 // Global Variables
@@ -111,7 +110,7 @@ function setTkn() {
             calcTime();
     } else {
         $("#tkn").html(`
-         <input type="number" id="i_tkn" class="m-2 noInput">
+         <input type="number" id="i_tkn" class="m-2 noInput" onkeypress="enterKey(event, 'btn_tkn')">
         <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
         <p>Number Invalid</p>
         `);
@@ -125,17 +124,12 @@ function setTkn_H() {
 
     // Check if need is setted
     if (!tknNeedSet) {
-        console.log("setToken");
         $("#tkn_h").html(`
-         <input type="number" id="i_tkn_h" class="m-2 noInput">
+         <input type="number" id="i_tkn_h" class="m-2 noInput" onkeypress="enterKey(event, 'btn_tkn_h')">
         <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
         <p>Set Token Needed first</p>
         `);
     } else {
-        console.log(tkn_h_n);
-
-
-
         // Validator
         if (tkn_h_n < 10000 && tkn_h_n >= 0 && tkn_h_n < parseInt(tknNeedValue)) {
             $("#tkn_h").html(`<h6 id="num_h">${tkn_h}</h6>`);
@@ -144,7 +138,7 @@ function setTkn_H() {
                 calcTime();
         } else {
             $("#tkn_h").html(`
-         <input type="number" id="i_tkn_h" class="m-2 noInput">
+         <input type="number" id="i_tkn_h" class="m-2 noInput" onkeypress="enterKey(event, 'btn_tkn_h')">
         <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
         <p>Number Invalid</p>
         `);
@@ -161,18 +155,17 @@ function setPoints() {
         $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
     } else {
         $("#ptn").html(`
-        <input type="number" class="m-2 noInput" id="points">
-        <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+        <input type="number" class="m-2 noInput" id="points" onkeypress="enterKey(event, 'btnPoints')">
+        <button id="btnPoints"  type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
         <p>Max 199</p>
         `);
     }
-    // console.log(ptn)
 }
 
 function resetPnt() {
     $("#ptn").html(`
-    <input type="number" class="m-2" id="points">
-    <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+    <input type="number" class="m-2" id="points" onkeypress="enterKey(event, 'btnPoints')">
+    <button id="btnPoints"  type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
         `);
     errorBox(0, null);
 }
@@ -188,9 +181,6 @@ function calcTime() {
     // text to N
     var a = parseInt(tkn);
     var b = parseInt(tkn_h);
-
-    // console.log(tkn,tkn_h)
-    // console.log(a,b)
 
     if (a >= 1 && 9999 & b >= 1 && 9999) {
         var allTkn = a - b
@@ -287,7 +277,7 @@ function add() {
         rawGameTh[0].classList.remove("noInput");
         rawGameTm[0].classList.remove("noInput");
         rawGameTs[0].classList.remove("noInput");
-        
+
         gameTh = parseInt(rawGameTh.val());
         gameTm = parseInt(rawGameTm.val());
         gameTs = parseInt(rawGameTs.val());
@@ -308,11 +298,7 @@ function add() {
 
                             var myP = parseInt($("#ptn_n").text());
 
-                            console.log(myP)
-                            console.log(p)
-
                             var NewMyP = parseInt(myP + p);
-                            console.log(NewMyP)
 
                             if (gameTs >= 10) {
 
@@ -325,11 +311,6 @@ function add() {
                                 // var ptn = parseInt(NewMyP - 200);
                                 var ptn = parseInt(NewMyP % 200);
                                 var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                                console.log("maggiore")
-                                // console.log(ptnR)
 
                                 $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
 
@@ -348,11 +329,7 @@ function add() {
                             }
                         } else {
                             var p = GameTime * 4;
-                            console.log(p)
                             var myP = parseInt($("#ptn_n").text());
-                            console.log(myP)
-                            console.log(p)
-                            // console.log("ecco")
 
                             var NewMyP = parseInt(myP + p);
                             if (gameTs >= 10) {
@@ -360,17 +337,11 @@ function add() {
                                 var clc_s = parseInt(gameTs / 10);
                                 var NewMyP = NewMyP + clc_s;
                             }
-                            // console.log(NewMyP)
                             if (NewMyP >= 200) {
 
                                 // var ptn = parseInt(NewMyP - 200);
                                 var ptn = parseInt(NewMyP % 200);
                                 var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                                console.log("maggiore")
-                                // console.log(ptnR)
 
                                 $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
 
@@ -387,8 +358,6 @@ function add() {
                                 $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
                             }
                         }
-                    } else {
-                        console.log("Error1")
                     }
                 }
                 break;
@@ -403,11 +372,7 @@ function add() {
 
                             var myP = parseInt($("#ptn_n").text());
 
-                            console.log(myP)
-                            console.log(p)
-
                             var NewMyP = parseInt(myP + p);
-                            console.log(NewMyP)
                             if (gameTs >= 10) {
 
                                 var clc_s = parseInt(gameTs / 10);
@@ -419,11 +384,6 @@ function add() {
                                 // var ptn = parseInt(NewMyP - 200);
                                 var ptn = parseInt(NewMyP % 200);
                                 var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                                console.log("maggiore")
-                                // console.log(ptnR)
 
                                 $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
 
@@ -442,11 +402,7 @@ function add() {
                             }
                         } else {
                             var p = GameTime * 3;
-                            console.log(p)
                             var myP = parseInt($("#ptn_n").text());
-                            console.log(myP)
-                            console.log(p)
-                            console.log("ecco")
 
                             var NewMyP = parseInt(myP + p);
                             if (gameTs >= 10) {
@@ -454,17 +410,11 @@ function add() {
                                 var clc_s = parseInt(gameTs / 10);
                                 var NewMyP = NewMyP + clc_s;
                             }
-                            // console.log(NewMyP)
                             if (NewMyP >= 200) {
 
                                 // var ptn = parseInt(NewMyP - 200);
                                 var ptn = parseInt(NewMyP % 200);
                                 var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                                console.log("maggiore")
-                                // console.log(ptnR)
 
                                 $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
 
@@ -481,8 +431,6 @@ function add() {
                                 $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
                             }
                         }
-                    } else {
-                        console.log("Error2")
                     }
                 }
                 break;
@@ -497,11 +445,7 @@ function add() {
 
                             var myP = parseInt($("#ptn_n").text());
 
-                            console.log(myP)
-                            console.log(p)
-
                             var NewMyP = parseInt(myP + p);
-                            console.log(NewMyP)
                             if (gameTs >= 10) {
 
                                 var clc_s = parseInt(gameTs / 10);
@@ -513,11 +457,6 @@ function add() {
                                 // var ptn = parseInt(NewMyP - 200);
                                 var ptn = parseInt(NewMyP % 200);
                                 var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                                console.log("maggiore")
-                                // console.log(ptnR)
 
                                 $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
 
@@ -536,11 +475,7 @@ function add() {
                             }
                         } else {
                             var p = GameTime * 1;
-                            console.log(p)
                             var myP = parseInt($("#ptn_n").text());
-                            console.log(myP)
-                            console.log(p)
-                            console.log("ecco")
 
                             var NewMyP = parseInt(myP + p);
 
@@ -549,17 +484,11 @@ function add() {
                                 var clc_s = parseInt(gameTs / 10);
                                 var NewMyP = NewMyP + clc_s;
                             }
-                            // console.log(NewMyP)
                             if (NewMyP >= 200) {
 
                                 // var ptn = parseInt(NewMyP - 200);
                                 var ptn = parseInt(NewMyP % 200);
                                 var ptn1 = parseInt(NewMyP / 200);
-
-
-
-                                console.log("maggiore")
-                                // console.log(ptnR)
 
                                 $("#ptn").html(`<h6 id="ptn_n">${ptn}</h6><h6 id="ptn_n">/200</h6>`);
 
@@ -576,8 +505,6 @@ function add() {
                                 $("#ptn").html(`<h6 id="ptn_n">${NewMyP}</h6><h6 id="ptn_n">/200</h6>`);
                             }
                         }
-                    } else {
-                        console.log("Error3")
                     }
                 }
                 break;
@@ -593,7 +520,7 @@ function add() {
         errorBox(1, "Inserire valori");
         if (!tknGotSet) {
             $("#tkn_h").html(`
-         <input type="number" id="i_tkn_h" class="m-2 noInput">
+         <input type="number" id="i_tkn_h" class="m-2 noInput" onkeypress="enterKey(event, 'btn_tkn_h')">
         <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
         <p>Set Holded Token</p>
         `);
@@ -601,7 +528,7 @@ function add() {
 
         if (!tknNeedSet) {
             $("#tkn").html(`
-         <input type="number" id="i_tkn" class="m-2 noInput">
+         <input type="number" id="i_tkn" class="m-2 noInput" onkeypress="enterKey(event, 'btn_tkn')">
         <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
         <p>Set Needed Token</p>
         `);
@@ -610,7 +537,7 @@ function add() {
         if (!pointsSetted) {
             $("#ptn").html(`
         <input type="number" class="m-2 noInput" id="points">
-        <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+        <button id="btnPoints" type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
         <p>Max 199</p>
         `);
         }
@@ -631,7 +558,7 @@ function errorBox(i, msg) {
             element.removeClass("show");
             break;
         case (1):
-            if(!element.hasClass("alert-danger")){
+            if (!element.hasClass("alert-danger")) {
                 element.removeClass("alert-success");
                 element.addClass("alert-danger");
             }
@@ -640,14 +567,12 @@ function errorBox(i, msg) {
             break;
         case (2):
             if (element.hasClass("show")) {
-                console.log("With class - FAST");
 
                 element.removeClass("show");
 
                 setTimeout(
                     function () {
 
-                        console.log("With class");
                         element.removeClass("alert-danger");
                         element.addClass("alert-success");
                         element.html(msg);
@@ -659,7 +584,6 @@ function errorBox(i, msg) {
                             }, 3000);
                     }, 150);
             } else {
-                console.log("Without class");
                 element.removeClass("show");
                 element.removeClass("alert-danger");
                 element.addClass("alert-success");
@@ -677,4 +601,11 @@ function errorBox(i, msg) {
             break;
     }
     return;
+}
+
+// "Enter" to submit input
+function enterKey(e, btn) {
+    if (e.keyCode == 13) {
+        $('#' + btn).click();
+    }
 }
