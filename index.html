@@ -70,73 +70,85 @@
 
           <!-- First row input -->
           <div class="row ">
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
-              <div class="d-flex justify-content-center">
-                <h5>
-                  Token Needed
-                </h5>
 
-                <div id="c-pop-up" class="">
-                  <!-- <div id="" class="pop-up box">
+            <!-- Error Box -->
+            <div class="row">
+              <div class="container-fluid">
+                <div id="alertTxt" class="alert alert-danger fade " role="alert">
+                  Initial txt...
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+                <div class="d-flex justify-content-center">
+                  <h5>
+                    Token Needed
+                  </h5>
+
+                  <div id="c-pop-up" class="">
+                    <!-- <div id="" class="pop-up box">
                     test
                   </div> -->
-                  <img src="img/ico/answer.png" alt="" class="ico m-1">
+                    <img src="img/ico/answer.png" alt="" class="ico m-1">
+                  </div>
+                </div>
+                <div class="d-flex  justify-content-center">
+                  <div id="tkn">
+                    <!-- <input type="number" id="test" onchange="onlyNumber(event)" class="m-2"> -->
+                    <input type="number" id="i_tkn" class="m-2">
+                    <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
+                  </div>
                 </div>
               </div>
-              <div class="d-flex  justify-content-center">
-                <div id="tkn">
-                  <!-- <input type="number" id="test" onchange="onlyNumber(event)" class="m-2"> -->
-                  <input type="number" id="i_tkn" class="m-2">
-                  <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
+
+              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+                <div>
+                  <h5>
+                    Token Hold
+                  </h5>
+
+                </div>
+                <div class="d-flex  justify-content-center">
+                  <div id="tkn_h">
+                    <input type="number" id="i_tkn_h" class="m-2">
+                    <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
-              <div>
-                <h5>
-                  Token Hold
-                </h5>
-                
-              </div>
-              <div class="d-flex  justify-content-center">
-                <div id="tkn_h">
-                  <input type="number" id="i_tkn_h" class="m-2">
-                  <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
+              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+                <div>
+                  <h5>
+                    Time Needed
+                  </h5>
                 </div>
-              </div>
-            </div>
+                <div id="result" class="d-flex justify-content-center">
+                  <p id="time-day" class="text-spacing">WIN = </p>
+                  <p class="output">00 H 00 M 00 S</p>
+                </div>
 
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
-              <div>
-                <h5>
-                  Time Needed
-                </h5>
-              </div>
-              <div id="result" class="d-flex justify-content-center">
-                <p id="time-day" class="text-spacing">WIN = </p>
-                <p class="output">00 H 00 M 00 S</p>
-              </div>
+                <div id="c-timeneed" class="d-flex justify-content-center">
+                  <p id="time-day" class="text-spacing">Lose =</p>
 
-              <div id="c-timeneed" class="d-flex justify-content-center">
-                <p id="time-day" class="text-spacing">Lose =</p>
+                  <p class="output1">00 H 00 M 00 S</p>
 
-                <p class="output1">00 H 00 M 00 S</p>
+                </div>
+
 
               </div>
 
-
-            </div>
-
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
-              <div>
-                <h5>
-                  Pass Expard
-                </h5>
-              </div>
-              <div>
-                <p>16 August Time 8:59 AM (CEST)</p>
-                <p id="demo"></p>
+              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+                <div>
+                  <h5>
+                    Pass Expard
+                  </h5>
+                </div>
+                <div>
+                  <p>16 August Time 8:59 AM (CEST)</p>
+                  <p id="demo"></p>
+                </div>
               </div>
             </div>
           </div>
@@ -164,7 +176,7 @@
                 <form action="" class="m-2">
                   <!-- <label for="sel1" class="form-label">Select</label> -->
                   <select class="form-select" id="mode" name="sellist1">
-                    <option value="1">Draft</option>
+                    <option value="1" selected>Draft</option>
                     <option value="1">ARAM</option>
                     <option value="2">TFT</option>
                     <option value="3">VS BOT</option>
@@ -270,7 +282,7 @@
                     <option value="59">59</option>
                   </select>
                 </form> -->
-                
+
                 <!-- <form action="" class="m-1">
                   <label for="sel1" class="form-label">M</label>
                   <select class="form-select" id="gametime_s" name="sellist1">
@@ -337,7 +349,7 @@
                     <option value="59">59</option>
                   </select>
                 </form> -->
-                
+
               </div>
               <div id="notime">
               </div>
@@ -353,7 +365,7 @@
                 <form action="" class="m-2">
                   <!-- <label for="sel1" class="form-label">Select</label> -->
                   <select class="form-select" id="win_lose" name="sellist1">
-                    <option value="1">Win</option>
+                    <option value="1" selected>Win</option>
                     <option value="2">Lose</option>
                   </select>
                 </form>
@@ -385,7 +397,7 @@
             <!-- </div> -->
 
             <!-- <div class="col  center centerBox m-1" > -->
-            <button type="button" class="btn btn-primary m-2 col  center  m-1" onclick="add()">Add</button>
+            <button id="addBtn" type="button" class="btn btn-primary m-2 col  center  m-1" onclick="add()">Add</button>
             <!-- </div> -->
           </div>
         </div>

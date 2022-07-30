@@ -3,23 +3,28 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //    Twitch
     new Twitch.Player("twitch-ad-1", {
-        channel: "cerbero_podcast"
+        channel: "cerbero_podcast",
+        muted: true
     });
 
     new Twitch.Player("twitch-ad-2", {
-        channel: "pow3rtv"
+        channel: "pow3rtv",
+        muted: true
     });
 
     new Twitch.Player("twitch-ad-3", {
-        channel: "moonryde"
+        channel: "moonryde",
+        muted: true
     });
 
     new Twitch.Player("twitch-ad-4", {
-        channel: "amouranth"
+        channel: "amouranth",
+        muted: true
     });
 
     new Twitch.Player("twitch-ad-5", {
-        channel: "andreadel1988"
+        channel: "andreadel1988",
+        muted: true
     });
     /* --------------------------------- scroll --------------------------------- */
     /* ------------------------------- da rivedere ------------------------------ */
@@ -169,6 +174,7 @@ function resetPnt() {
     <input type="number" class="m-2" id="points">
     <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
         `);
+    errorBox(0, null);
 }
 /* -------------------------------------------------------------------------- */
 
@@ -255,41 +261,42 @@ function add() {
     var gameTm;
     var gameTs;
     var Wl = $("#win_lose").val();
-    
+
     // Check if time is setted
-    if(rawGameTh.val() == "" || rawGameTm.val() == "" || rawGameTs.val() == "" ){
-        console.log(rawGameTh);
-        if(rawGameTh.val() == ""){
+    if (rawGameTh.val() == "" || rawGameTm.val() == "" || rawGameTs.val() == "") {
+        if (rawGameTh.val() == "") {
             rawGameTh[0].classList.add("noInput");
         } else {
             rawGameTh[0].classList.remove("noInput");
         }
 
-        if(rawGameTm.val() == ""){
+        if (rawGameTm.val() == "") {
             rawGameTm[0].classList.add("noInput");
         } else {
             rawGameTm[0].classList.remove("noInput");
         }
 
-        if(rawGameTs.val() == ""){
+        if (rawGameTs.val() == "") {
             rawGameTs[0].classList.add("noInput");
         } else {
             rawGameTs[0].classList.remove("noInput");
         }
+        errorBox(1, "Inserire valori");
         return;
     } else {
         rawGameTh[0].classList.remove("noInput");
         rawGameTm[0].classList.remove("noInput");
         rawGameTs[0].classList.remove("noInput");
-
+        
         gameTh = parseInt(rawGameTh.val());
-        gameTm = parseInt(rawGameTh.val());
-        gameTs = parseInt(rawGameTh.val());
+        gameTm = parseInt(rawGameTm.val());
+        gameTs = parseInt(rawGameTs.val());
     }
 
     if (pointsSetted && tknGotSet && tknNeedSet) {
         var GameTime = (gameTh * 60) + gameTm;
-
+        $("#addBtn").prop('disabled', true);
+        errorBox(2, "Partita [" + $("#mode :selected").text() + "] [" + gameTh + "h:" + gameTm + "m:" + gameTs + "s] [" + $("#win_lose :selected").text() + "] inserita");
         switch (game) {
             case "1":
                 if (GameTime == 0) {
@@ -578,8 +585,13 @@ function add() {
             default:
                 break;
         }
+        setTimeout(
+            function () {
+                $("#addBtn").prop('disabled', false);
+            }, 3000);
     } else {
-        if(!tknGotSet){
+        errorBox(1, "Inserire valori");
+        if (!tknGotSet) {
             $("#tkn_h").html(`
          <input type="number" id="i_tkn_h" class="m-2 noInput">
         <button id="btn_tkn_h" type="button" class="btn btn-primary m-2" onclick="setTkn_H()">Set</button>
@@ -587,13 +599,22 @@ function add() {
         `);
         }
 
-        if(!tknNeedSet){
+        if (!tknNeedSet) {
             $("#tkn").html(`
          <input type="number" id="i_tkn" class="m-2 noInput">
         <button id="btn_tkn" type="button" class="btn btn-primary m-2" onclick="setTkn()">Set</button>
         <p>Set Needed Token</p>
         `);
         }
+
+        if (!pointsSetted) {
+            $("#ptn").html(`
+        <input type="number" class="m-2 noInput" id="points">
+        <button type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+        <p>Max 199</p>
+        `);
+        }
+
     }
 
 }
@@ -601,3 +622,59 @@ function add() {
 // es: 25:37 25x6 ma 37 conta come 3 punti
 
 /* -------------------------------------------------------------------------- */
+
+function errorBox(i, msg) {
+    // i: 0(reset), 1(error), 2(insert)
+    var element = $("#alertTxt");
+    switch (i) {
+        case (0):
+            element.removeClass("show");
+            break;
+        case (1):
+            if(!element.hasClass("alert-danger")){
+                element.removeClass("alert-success");
+                element.addClass("alert-danger");
+            }
+            element.html(msg);
+            element.addClass("show");
+            break;
+        case (2):
+            if (element.hasClass("show")) {
+                console.log("With class - FAST");
+
+                element.removeClass("show");
+
+                setTimeout(
+                    function () {
+
+                        console.log("With class");
+                        element.removeClass("alert-danger");
+                        element.addClass("alert-success");
+                        element.html(msg);
+                        element.addClass("show");
+
+                        setTimeout(
+                            function () {
+                                element.removeClass("show");
+                            }, 3000);
+                    }, 150);
+            } else {
+                console.log("Without class");
+                element.removeClass("show");
+                element.removeClass("alert-danger");
+                element.addClass("alert-success");
+                element.html(msg);
+                element.addClass("show");
+
+                setTimeout(
+                    function () {
+                        element.removeClass("show");
+                    }, 3000);
+            }
+            break;
+        default:
+            console.log("errore in compilazione");
+            break;
+    }
+    return;
+}
