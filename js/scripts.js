@@ -543,7 +543,7 @@ function add() {
         }
 
     }
-
+    window.location.href="#alertTxt";
 }
 /* -------------------------------------------------------------------------- */
 // es: 25:37 25x6 ma 37 conta come 3 punti

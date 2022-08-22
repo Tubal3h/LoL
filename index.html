@@ -10,7 +10,7 @@
   <!-- Bootstrap -->
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <script src="/js/bootstrap.bundle.min.js">
-    </script>
+  </script>
   <!-- JQuery -->
   <script src="/js/jquery-3.6.0.min.js"></script>
   <!-- Twitch -->
@@ -29,7 +29,7 @@
     <div class="row">
 
       <!-- Navigation Bar -->
-      <nav id="navBar" class="nav flex-md-column col-sm-1 justify-content-between">
+      <nav id="navBar" class="nav flex-md-column col-md-1 col-12 justify-content-between">
         <div id="logo" class=" container-fluid">
           <a href="#">
             <h1 class="">
@@ -38,20 +38,16 @@
           </a>
         </div>
 
-        <div class="mb-5">
+        <div class="tutorialBotton">
           <a class="nav-link center" href="pages/tutorial.html">
             <img id="Tutorial" src="img/ico/video-lesson.png" alt="">
             Tutorial
           </a>
-          <!-- <a class="nav-link center" href="#">
-            <img id="twitch" src="img/ico/twitch.png" alt="">
-            Partner
-          </a> -->
         </div>
       </nav>
 
       <!-- Main body -->
-      <div id="calcArea" class="col-sm-8 d-flex bkgLol">
+      <div id="calcArea" class="col-md-8 col-12 d-flex bkgLol">
 
         <div class="container-fluid justify-content-between calcAreaBox">
 
@@ -65,20 +61,21 @@
 
           </div>
 
-          <!-- First row input -->
-          <div class="row ">
-
-            <!-- Error Box -->
-            <div class="row">
-              <div class="container-fluid">
-                <div id="alertTxt" class="alert alert-danger fade " role="alert">
-                  Initial txt...
-                </div>
+          <!-- Error Box -->
+          <div class="row">
+            <div class="container-fluid">
+              <div id="alertTxt" class="alert alert-danger fade " role="alert">
+                Initial txt...
               </div>
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+          <!-- First row input -->
+          <div class="row row-cols-md-4 row-cols-2 justify-content-around">
+
+
+            <div class="col my-2">
+              <div class="boxRight center centerBox d-flex flex-column justify-content-around boxIn">
                 <div class="d-flex justify-content-center">
                   <h5>
                     Token Needed
@@ -99,8 +96,10 @@
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+            <div class="col my-2">
+              <div class="boxLeft center centerBox d-flex flex-column justify-content-around boxIn">
                 <div>
                   <h5>
                     Token Hold
@@ -114,8 +113,10 @@
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+            <div class="col my-2">
+              <div class="boxRight center centerBox d-flex flex-column justify-content-around boxIn">
                 <div>
                   <h5>
                     Time Needed
@@ -132,11 +133,11 @@
                   <p class="output1">00 H 00 M 00 S</p>
 
                 </div>
-
-
               </div>
+            </div>
 
-              <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
+            <div class="col my-2">
+              <div class="boxLeft center centerBox d-flex flex-column justify-content-around boxIn">
                 <div>
                   <h5>
                     Pass Expard
@@ -162,36 +163,40 @@
 
           <!-- Second row input -->
           <div class="row">
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
-              <div>
-                <h5>
-                  Game Select
-                </h5>
 
-              </div>
-              <div>
-                <form action="" class="m-2">
-                  <!-- <label for="sel1" class="form-label">Select</label> -->
-                  <select class="form-select" id="mode" name="sellist1">
-                    <option value="1" selected>Draft</option>
-                    <option value="1">ARAM</option>
-                    <option value="2">TFT</option>
-                    <option value="3">VS BOT</option>
-                  </select>
-                </form>
+            <div class="col my-2">
+              <div class="boxRight center centerBox d-flex flex-column justify-content-around boxIn">
+                <div>
+                  <h5>
+                    Game Select
+                  </h5>
 
+                </div>
+                <div>
+                  <form action="" class="m-2">
+                    <!-- <label for="sel1" class="form-label">Select</label> -->
+                    <select class="form-select" id="mode" name="sellist1">
+                      <option value="1" selected>Draft</option>
+                      <option value="1">ARAM</option>
+                      <option value="2">TFT</option>
+                      <option value="3">VS BOT</option>
+                    </select>
+                  </form>
+
+                </div>
               </div>
             </div>
 
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-center">
-              <div>
-                <h5>
-                  Game Time
-                </h5>
-              </div>
+            <div class="col my-2">
+              <div class="boxLeft center centerBox d-flex flex-column justify-content-around boxIn">
+                <div>
+                  <h5>
+                    Game Time
+                  </h5>
+                </div>
 
-              <div id="c-g-time" class="d-flex justify-content-center">
-                <!-- <form action="" class="m-1">
+                <div id="c-g-time" class="d-flex justify-content-center">
+                  <!-- <form action="" class="m-1">
                   <label for="sel1" class="form-label">H</label>
                   <select class="form-select" id="gametime_h" name="sellist1">
                     <option value="0">H</option>
@@ -201,19 +206,19 @@
                   </select>
                 </form> -->
 
-                <div id="" class=" m-1">
-                  <input type="number" id="gametime_h" placeholder="Hours">
-                </div>
+                  <div id="" class=" m-1">
+                    <input type="number" id="gametime_h" placeholder="Hours">
+                  </div>
 
-                <div id="" class=" m-1">
-                  <input type="number" id="gametime_m" placeholder="Minutes">
-                </div>
+                  <div id="" class=" m-1">
+                    <input type="number" id="gametime_m" placeholder="Minutes">
+                  </div>
 
-                <div id="" class=" m-1">
-                  <input type="number" id="gametime_s" placeholder="Seconds">
-                </div>
+                  <div id="" class=" m-1">
+                    <input type="number" id="gametime_s" placeholder="Seconds">
+                  </div>
 
-                <!-- <form action="" class="m-1">
+                  <!-- <form action="" class="m-1">
                   <label for="sel1" class="form-label">M</label>
                   <select class="form-select" id="gametime_m" name="sellist1">
                     <option value="0">M</option>
@@ -280,7 +285,7 @@
                   </select>
                 </form> -->
 
-                <!-- <form action="" class="m-1">
+                  <!-- <form action="" class="m-1">
                   <label for="sel1" class="form-label">M</label>
                   <select class="form-select" id="gametime_s" name="sellist1">
                     <option value="0">S</option>
@@ -347,40 +352,46 @@
                   </select>
                 </form> -->
 
-              </div>
-              <div id="notime">
-              </div>
-            </div>
-
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-around">
-              <div>
-                <h5>
-                  Win - Lose
-                </h5>
-              </div>
-              <div>
-                <form action="" class="m-2">
-                  <!-- <label for="sel1" class="form-label">Select</label> -->
-                  <select class="form-select" id="win_lose" name="sellist1">
-                    <option value="1" selected>Win</option>
-                    <option value="2">Lose</option>
-                  </select>
-                </form>
+                </div>
+                <div id="notime">
+                </div>
               </div>
             </div>
 
-            <div class="col mx-2 center centerBox d-flex flex-column justify-content-center">
-              <div>
-                <h5>
-                  Points
-                </h5>
+            <div class="col my-2">
+              <div class="boxRight center centerBox d-flex flex-column justify-content-around boxIn">
+                <div>
+                  <h5>
+                    Win - Lose
+                  </h5>
+                </div>
+                <div>
+                  <form action="" class="m-2">
+                    <!-- <label for="sel1" class="form-label">Select</label> -->
+                    <select class="form-select" id="win_lose" name="sellist1">
+                      <option value="1" selected>Win</option>
+                      <option value="2">Lose</option>
+                    </select>
+                  </form>
+                </div>
               </div>
-              <div class="d-flex flex-column justify-content-center">
+            </div>
 
-                <div class="d-flex  justify-content-center">
-                  <div id="ptn" class="d-flex">
-                    <input type="number" class="m-2" id="points" onkeypress="enterKey(event, 'btnPoints')">
-                    <button id="btnPoints" type="button" class="btn btn-primary m-2" onclick="setPoints()">Set</button>
+            <div class="col my-2">
+              <div class="boxLeft center centerBox d-flex flex-column justify-content-around boxIn">
+                <div>
+                  <h5>
+                    Points
+                  </h5>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+
+                  <div class="d-flex  justify-content-center">
+                    <div id="ptn" class="d-flex">
+                      <input type="number" class="m-2" id="points" onkeypress="enterKey(event, 'btnPoints')">
+                      <button id="btnPoints" type="button" class="btn btn-primary m-2"
+                        onclick="setPoints()">Set</button>
+                    </div>
                   </div>
                 </div>
               </div>
